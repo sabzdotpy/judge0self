@@ -6,31 +6,18 @@ services:
     dockerfilePath: ./Dockerfile
     envVars:
       - key: REDIS_HOST
-        value: redis:6379
+        value: redis://red-d20a1lqli9vc739r84bg:6379
       - key: REDIS_PASSWORD
         sync: false
       - key: POSTGRES_HOST
-        value: db:5432
+        value: postgresql://judge0postgres_user:fxZAeqpyTA3I5Cpfc6BBHMZCydfSDrNQ@dpg-d20a0d6mcj7s73atl5fg-a/judge0postgres:5432
       - key: POSTGRES_DB
-        value: judge0
+        value: judge0postgres
       - key: POSTGRES_USER
-        value: postgres
+        value: judge0postgres_user
       - key: POSTGRES_PASSWORD
-        sync: false
+        value: fxZAeqpyTA3I5Cpfc6BBHMZCydfSDrNQ
       - key: ENABLE_AUTH_HEADERS
         value: false
     ports:
       - 2358
-
-  - type: redis
-    name: redis
-    plan: starter
-    maxmemoryPolicy: allkeys-lru
-    ipAllowList: [] # Allow all internal
-
-  - type: postgres
-    name: db
-    plan: starter
-    databases:
-      - name: judge0
-    ipAllowList: [] # Allow all internal

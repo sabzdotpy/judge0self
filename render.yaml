@@ -19,5 +19,3 @@ services:
         value: fxZAeqpyTA3I5Cpfc6BBHMZCydfSDrNQ
       - key: ENABLE_AUTH_HEADERS
         value: false
-    ports:
-      - 2358

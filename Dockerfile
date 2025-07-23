@@ -1,4 +1,4 @@
-FROM judge0/api:1.13.1
+FROM judge0/judge0:latest-dev
 
 COPY judge0.conf /judge0.conf
 COPY init.sh /init.sh

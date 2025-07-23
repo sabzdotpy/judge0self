@@ -1,0 +1,36 @@
+services:
+  - type: web
+    name: judge0-api
+    env: docker
+    plan: starter
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: REDIS_HOST
+        value: redis:6379
+      - key: REDIS_PASSWORD
+        sync: false
+      - key: POSTGRES_HOST
+        value: db:5432
+      - key: POSTGRES_DB
+        value: judge0
+      - key: POSTGRES_USER
+        value: postgres
+      - key: POSTGRES_PASSWORD
+        sync: false
+      - key: ENABLE_AUTH_HEADERS
+        value: false
+    ports:
+      - 2358
+
+  - type: redis
+    name: redis
+    plan: starter
+    maxmemoryPolicy: allkeys-lru
+    ipAllowList: [] # Allow all internal
+
+  - type: postgres
+    name: db
+    plan: starter
+    databases:
+      - name: judge0
+    ipAllowList: [] # Allow all internal
